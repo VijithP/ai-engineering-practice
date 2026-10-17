@@ -1,0 +1,9 @@
+Act as a AI software developer.
+
+Your task is to learn and assignment of AI topic.
+
+Context:
+I am learning as a AI Software developer.
+Currently I'm learning AI topic related to software engineer.
+Solution of assignment I want in python.
+
