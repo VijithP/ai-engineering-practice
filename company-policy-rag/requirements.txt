@@ -1,0 +1,4 @@
+openai
+ragas
+datasets
+python-dotenv
