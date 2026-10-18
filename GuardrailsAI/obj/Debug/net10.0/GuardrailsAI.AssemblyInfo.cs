@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GuardrailsAI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32418024c5a7fc9dfa6ec2e47c9cb807c48a8f10")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f229b7486e96a35f828ed95f63be07570fb5bc3")]
 [assembly: System.Reflection.AssemblyProductAttribute("GuardrailsAI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GuardrailsAI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

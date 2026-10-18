@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>
+        Internal Knowledge Assistant
+    </title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #answer {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f1f3f5;
+            white-space: pre-wrap;
+        }
+
+        #sources {
+            margin-top: 20px;
+        }
+
+        .source {
+            padding: 8px;
+            background: #eee;
+            margin-top: 5px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        Internal Knowledge Assistant
+    </h1>
+
+    <p>
+        Ask questions about company policies.
+    </p>
+
+    <textarea
+        id="question"
+        placeholder="Example: Can I work remotely?">
+    </textarea>
+
+    <br>
+
+    <button onclick="askQuestion()">
+        Ask Assistant
+    </button>
+
+    <div id="answer"></div>
+
+    <div id="sources"></div>
+
+</div>
+
+<script>
+
+async function askQuestion() {
+
+    const question =
+        document.getElementById("question").value;
+
+    const answerElement =
+        document.getElementById("answer");
+
+    const sourcesElement =
+        document.getElementById("sources");
+
+    if (!question.trim()) {
+
+        answerElement.innerText =
+            "Please enter a question.";
+
+        return;
+    }
+
+    answerElement.innerText =
+        "Thinking...";
+
+    sourcesElement.innerHTML = "";
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/knowledge/ask",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            question: question
+                        })
+                });
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            answerElement.innerText =
+                data.error ||
+                "Request failed.";
+
+            return;
+        }
+
+        answerElement.innerText =
+            data.answer;
+
+        if (data.cached) {
+
+            answerElement.innerText +=
+                "\n\n[Response served from cache]";
+        }
+
+        if (data.sources &&
+            data.sources.length > 0) {
+
+            sourcesElement.innerHTML =
+                "<h3>Sources</h3>";
+
+            data.sources.forEach(
+                source => {
+
+                    const div =
+                        document.createElement(
+                            "div");
+
+                    div.className =
+                        "source";
+
+                    div.innerText =
+                        source;
+
+                    sourcesElement.appendChild(
+                        div);
+                });
+        }
+
+    }
+    catch (error) {
+
+        answerElement.innerText =
+            "Unable to connect to the API.";
+
+        console.error(error);
+    }
+}
+
+</script>
+
+</body>
+
+</html>

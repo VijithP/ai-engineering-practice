@@ -1,0 +1,121 @@
+@model List<EvaluationResult>
+
+<div class="container mt-4">
+
+    <h2>RAG Evaluation Dashboard</h2>
+
+    <div class="row mt-4">
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Faithfulness</h5>
+                    <h2>
+                        @(Model.Any()
+                            ? Model.Average(x => x.Faithfulness)
+                                .ToString("P0")
+                            : "0%")
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Answer Relevancy</h5>
+                    <h2>
+                        @(Model.Any()
+                            ? Model.Average(x => x.AnswerRelevancy)
+                                .ToString("P0")
+                            : "0%")
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Context Precision</h5>
+                    <h2>
+                        @(Model.Any()
+                            ? Model.Average(x => x.ContextPrecision)
+                                .ToString("P0")
+                            : "0%")
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Context Recall</h5>
+                    <h2>
+                        @(Model.Any()
+                            ? Model.Average(x => x.ContextRecall)
+                                .ToString("P0")
+                            : "0%")
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h4>Evaluation History</h4>
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+                <th>Question</th>
+                <th>Faithfulness</th>
+                <th>Relevancy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>Date</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Question</td>
+
+                <td>
+                    @item.Faithfulness.ToString("P0")
+                </td>
+
+                <td>
+                    @item.AnswerRelevancy.ToString("P0")
+                </td>
+
+                <td>
+                    @item.ContextPrecision.ToString("P0")
+                </td>
+
+                <td>
+                    @item.ContextRecall.ToString("P0")
+                </td>
+
+                <td>
+                    @item.EvaluatedAt
+                </td>
+
+            </tr>
+        }
+
+        </tbody>
+
+    </table>
+
+</div>

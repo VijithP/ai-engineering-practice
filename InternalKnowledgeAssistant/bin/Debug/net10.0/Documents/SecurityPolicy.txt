@@ -1,0 +1,15 @@
+Information Security Policy
+
+Employees must protect company systems and information.
+
+Passwords must not be shared with other employees.
+
+Employees should use multi-factor authentication where required.
+
+Confidential company information must not be shared with unauthorized
+persons.
+
+Security incidents must be reported to the appropriate security or IT
+team.
+
+Employees must lock their computer when leaving their workstation.

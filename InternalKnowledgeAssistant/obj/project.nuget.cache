@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "pyY0ZykAYYY=",
+  "success": true,
+  "projectFilePath": "C:\\MyProject\\AI Practice\\InternalKnowledgeAssistant\\InternalKnowledgeAssistant.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\microsoft.extensions.apidescription.server\\10.0.0\\microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\microsoft.openapi\\2.7.5\\microsoft.openapi.2.7.5.nupkg.sha512",
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\openai\\2.14.0\\openai.2.14.0.nupkg.sha512",
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\swashbuckle.aspnetcore\\10.3.0\\swashbuckle.aspnetcore.10.3.0.nupkg.sha512",
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.3.0\\swashbuckle.aspnetcore.swagger.10.3.0.nupkg.sha512",
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.3.0\\swashbuckle.aspnetcore.swaggergen.10.3.0.nupkg.sha512",
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.3.0\\swashbuckle.aspnetcore.swaggerui.10.3.0.nupkg.sha512",
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\system.clientmodel\\1.15.0\\system.clientmodel.1.15.0.nupkg.sha512",
+    "C:\\Users\\vijith.pv\\.nuget\\packages\\system.memory.data\\10.0.9\\system.memory.data.10.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

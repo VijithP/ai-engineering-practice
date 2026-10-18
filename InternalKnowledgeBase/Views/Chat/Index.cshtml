@@ -1,0 +1,90 @@
+<div class="container mt-5">
+
+    <h2>Internal AI Assistant</h2>
+
+    <div class="card mt-4">
+
+        <div class="card-body">
+
+            <textarea
+                id="question"
+                class="form-control"
+                rows="3"
+                placeholder="Ask a question about company policies...">
+            </textarea>
+
+            <button
+                class="btn btn-primary mt-3"
+                onclick="askQuestion()">
+                Ask
+            </button>
+
+            <hr />
+
+            <h5>Answer</h5>
+
+            <div id="answer">
+                Ask a question to get started.
+            </div>
+
+            <hr />
+
+            <h5>Sources</h5>
+
+            <ul id="sources"></ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+async function askQuestion() {
+
+    const question =
+        document.getElementById("question").value;
+
+    if (!question)
+        return;
+
+    document.getElementById("answer").innerText =
+        "Searching...";
+
+    const response = await fetch("/Chat/Ask", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            question: question
+        })
+    });
+
+    const data = await response.json();
+
+    document.getElementById("answer")
+        .innerText = data.answer;
+
+    const sources =
+        document.getElementById("sources");
+
+    sources.innerHTML = "";
+
+    data.sources.forEach(source => {
+
+        const li =
+            document.createElement("li");
+
+        li.innerText = source;
+
+        sources.appendChild(li);
+
+    });
+}
+
+</script>
